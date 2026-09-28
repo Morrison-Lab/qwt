@@ -152,7 +152,7 @@ format:
     code-fold: false
     code-tools: true
     code-link: true
-    highlight-style: pygments
+    highlight-style: arrow
     lightbox: true
     link-external-icon: true
     embed-resources: false
