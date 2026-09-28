@@ -46,6 +46,18 @@ Mirrors [`.github/copilot-instructions.md`](.github/copilot-instructions.md). Ke
 - **Other CI checks**: workflows also verify bibliography DOIs (`check-bibliography-dois.yml`) and flag non-standard characters (`check-non-standard-chars.yaml`). Fix the flagged source rather than relaxing the check.
 - **Dependencies**: Dependabot auto-updates the `macros` submodule and GitHub Actions (see `.github/dependabot.yml`); don't bump those by hand unless a PR needs it.
 
+## ai-config plugin
+
+`.claude/settings.json` declares the `Morrison-Lab` marketplace (source:
+[`Morrison-Lab/ai-config`](https://github.com/Morrison-Lab/ai-config)) and enables
+its `ai-config@Morrison-Lab` plugin, along with the `posit-dev-skills` and `sembr`
+marketplaces this template also carries, matching
+[`Morrison-Lab/qbt`](https://github.com/Morrison-Lab/qbt). Declaring is not
+installing: a local session still needs `claude plugin install ai-config@Morrison-Lab`
+once. Because this is a template repository, this declaration is copied once into
+every repo created from it --- an omission here silently ships to every downstream
+site.
+
 ## Pull request expectations
 
 - Keep PRs scoped --- bug fixes shouldn't smuggle in refactors.
