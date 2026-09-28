@@ -1,0 +1,30 @@
+# Throwaway: exercises Morrison-Lab/gha#976's `preview` composite at the PR
+# head SHA, with change highlighting on, against this template's published
+# gh-pages render. Runs on push to this branch only; the branch is deleted
+# once the run is recorded. Nothing is deployed: the composite only uploads
+# an artifact.
+name: gha-976 template test
+
+on:
+  push:
+    branches:
+      - claude/gha-976-template-test
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: Morrison-Lab/gha/preview@3ff89dadf7fc02d0cffeeea822a1cefcc03faa32
+        with:
+          use-renv: 'false'
+          r-packages: |
+            any::knitr
+            any::rmarkdown
+            any::tibble
+          install-package: 'false'
+          highlight-changes: 'true'
+          changed-chapters-banner: 'true'
