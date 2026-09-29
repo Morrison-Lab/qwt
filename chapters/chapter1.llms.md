@@ -2,9 +2,19 @@
 
 Code
 
+- [Show All Code](javascript:void(0))
+
+- [Hide All Code](javascript:void(0))
+
+- 
+
+  ------------------------------------------------------------------------
+
+- [View Source](javascript:void(0))
+
 Published
 
-Last modified: 2026-09-28 22:22:18 (PDT)
+Last modified: 2026-09-28 22:56:28 (PDT)
 
 This is the first chapter of your website. Replace this content with your own.
 
@@ -55,6 +65,8 @@ You can also add theorem-style divs:
 > **Theorem 1** This is a sample theorem block with an ID.
 
 I’m adding some new content here:
+
+Show R code
 
 ``` r
 1 + 1
