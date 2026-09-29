@@ -15,7 +15,7 @@ Authoritative style guide: [UCD-SERG Lab Manual](https://ucd-serg.github.io/lab-
   render (`!references.qmd` in `_quarto-website.yml`), so it isn't part of the
   normal site build
 - `_quarto.yml`, `_quarto-website.yml` --- Quarto project + website config
-- `_extensions/` --- vendored Quarto extensions
+- `_extensions/` --- vendored Quarto extensions (including `code-language-labels`, which labels each code block with its language in HTML and revealjs output; v1.0.0 from [`d-morrison/code-language-labels`](https://github.com/d-morrison/code-language-labels))
 - `macros/` --- git submodule for shortcode/macro definitions (see `.gitmodules`)
 - `R/`, `man/`, `DESCRIPTION`, `NAMESPACE` --- the project is also a small R package
 - `references.bib` --- BibTeX bibliography
