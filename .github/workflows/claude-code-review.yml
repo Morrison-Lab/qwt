@@ -67,8 +67,9 @@ jobs:
              blocks are balanced, cross-refs (`@fig-`, `@tbl-`, `@sec-`)
              resolve to defined labels.
            - Bullet-list rule: 3+ items use bullets with a blank line above.
-           - `code-fold: true` is used on chunks where the output (not the
-             code) is the point, and avoided on tutorial code.
+           - Code folds by default (site-wide `code-fold: true`); chunks
+             keep the default where the output (not the code) is the point,
+             and tutorial code sets `#| code-fold: false`.
 
         2. **R code**
            - Conforms to `.lintr.R` settings (snake_case, line length, etc.).
