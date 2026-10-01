@@ -19,7 +19,8 @@ Authoritative style guide: [UCD-SERG Lab Manual](https://ucd-serg.github.io/lab-
 - `macros/` --- git submodule for shortcode/macro definitions (see `.gitmodules`)
 - `R/`, `man/`, `DESCRIPTION`, `NAMESPACE` --- the project is also a small R package
 - `references.bib` --- BibTeX bibliography
-- `styles.css` --- website styling; `styles-reveal.scss`, `qwt-reveal-toggle.html`, and the `revealjs-*.lua` filters drive the reveal.js slide output
+- `offwhite.scss`, `theme-picker.html` --- the website's Light / Off-white / Parchment / Dark theme dropdown (`theme-picker.html` builds it, `offwhite.scss` styles the two tinted palettes); the choice is saved under `mln-theme`, shared with the slides and with the other sites on this origin
+- `styles.css` --- website styling; `styles-reveal.scss`, `qwt-reveal-toggle.html` (the same four-theme dropdown for slides), and the `revealjs-*.lua` filters drive the reveal.js slide output
 - `assets/`, `images/` --- static image and asset files (site pages, docs, CI/PR screenshots)
 - `.github/workflows/` --- CI workflow definitions
 - `.github/scripts/` --- helper scripts used by workflows
