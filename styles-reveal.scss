@@ -105,9 +105,12 @@ body.qwt-dark .reveal {
   code span.in { color: #d4d0ab; }
 }
 
-// The code-fold summary ("[R code]") keeps the simple theme's dark grey.
+// The code-fold summary ("[R code]") is the text colour softened toward the page,
+// which stays above AA on every palette.
 .reveal details > summary,
-.reveal details > summary p { color: var(--qwt-muted); }
+.reveal details > summary p {
+  color: color-mix(in srgb, var(--qwt-fg) 70%, var(--qwt-bg));
+}
 
 .reveal-viewport,
 .reveal {
