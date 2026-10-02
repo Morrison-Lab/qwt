@@ -140,8 +140,10 @@ format:
       - sun123zxy/callouty-theorem
       - coatless-quarto/custom-callout
     theme:
-      light: cosmo
+      light: [cosmo, offwhite.scss]
       dark: darkly
+    # Replaces Quarto's two-way toggle with a Light / Off-white / Parchment / Dark dropdown.
+    include-in-header: theme-picker.html
     css: styles.css
     toc: true
     anchor-sections: true

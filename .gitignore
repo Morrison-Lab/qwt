@@ -8,6 +8,7 @@
 *.html
 # Source HTML partials we intentionally track (not build output).
 !qwt-reveal-toggle.html
+!theme-picker.html
 *_files/
 site_libs/
 

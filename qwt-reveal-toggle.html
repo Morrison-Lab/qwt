@@ -1,14 +1,17 @@
 <!--
-  Light/dark toggle button for the qwt revealjs format.
-  Pulled into every slide deck via the `include-in-header` entry in the
-  `revealjs:` block of `_quarto-website.yml`. Pairs with
-  `styles-reveal.scss` (which defines the palette CSS variables) --- the
-  button reads those vars so it stays legible in both modes. Persists
-  the choice in localStorage; first-time visitors get
-  `prefers-color-scheme` as the default.
+  Colour-theme dropdown for the qwt revealjs format: Light, Off-white,
+  Parchment, Dark. Pulled into every slide deck via the `include-in-header`
+  entry in the `revealjs:` block of `_quarto-website.yml`. Pairs with
+  `styles-reveal.scss`, which defines the palette CSS variables; the select
+  reads those vars so it stays legible in every palette. Light is the
+  default variable set, Off-white and Parchment are a data-palette attribute
+  on <html>, and Dark is the body.qwt-dark class. The choice is saved under
+  "mln-theme", the key the website's theme dropdown (theme-picker.html) uses,
+  so it carries across the site and the decks. First-time visitors get
+  Dark if their system prefers it, and Off-white otherwise.
 -->
 <style>
-  #qwt-theme-toggle {
+  #qwt-theme-select {
     position: fixed;
     bottom: 8px;
     left: 8px;
@@ -16,83 +19,82 @@
        from `revealjs-html-links.lua`; the three elements occupy different
        corners so they don't overlap. Keep them aligned if you bump this. */
     z-index: 31;
-    width: 2rem;
-    height: 2rem;
-    padding: 0;
+    padding: 2px 4px;
     border: 1px solid var(--qwt-border, rgba(0, 0, 0, 0.2));
-    border-radius: 50%;
+    border-radius: 4px;
     background: var(--qwt-chip-bg, rgba(255, 255, 255, 0.8));
-    color: var(--qwt-muted, rgba(0, 0, 0, 0.5));
+    color: var(--qwt-fg, #000);
     cursor: pointer;
-    font-size: 1rem;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.15s, background 0.15s, border-color 0.15s;
+    font: 12px sans-serif;
+    opacity: 0.7;
   }
-  #qwt-theme-toggle:hover {
-    color: var(--qwt-fg, rgba(0, 0, 0, 0.9));
-    background: var(--qwt-chip-bg-hover, rgba(255, 255, 255, 0.98));
+  #qwt-theme-select:hover,
+  #qwt-theme-select:focus-visible {
+    opacity: 1;
     border-color: var(--qwt-fg, rgba(0, 0, 0, 0.4));
   }
-  #qwt-theme-toggle:focus-visible {
+  #qwt-theme-select:focus-visible {
     outline: 2px solid var(--qwt-link, #2a76dd);
     outline-offset: 2px;
   }
+  @media print { #qwt-theme-select { display: none; } }
 </style>
 <script>
 (function () {
   "use strict";
-  var STORAGE_KEY = "qwt-reveal-theme";
+  var KEY = "mln-theme";
   var DARK_CLASS = "qwt-dark";
-  var SUN = "☀";       // ☀
-  var MOON = "☾";      // ☾
+  var OPTIONS = [["light", "Light"], ["offwhite", "Off-white"], ["parchment", "Parchment"], ["dark", "Dark"]];
+  var root = document.documentElement;
 
-  function applyTheme(theme) {
-    if (theme === "dark") {
-      document.body.classList.add(DARK_CLASS);
-    } else {
-      document.body.classList.remove(DARK_CLASS);
-    }
-    try { localStorage.setItem(STORAGE_KEY, theme); } catch (e) { /* private mode */ }
-    var btn = document.getElementById("qwt-theme-toggle");
-    if (btn) {
-      var dark = (theme === "dark");
-      btn.setAttribute("aria-pressed", dark ? "true" : "false");
-      btn.title = dark ? "Switch to light mode" : "Switch to dark mode";
-      btn.textContent = dark ? SUN : MOON;
-    }
+  function valid(choice) {
+    return OPTIONS.some(function (o) { return o[0] === choice; });
   }
 
-  function currentTheme() {
-    return document.body.classList.contains(DARK_CLASS) ? "dark" : "light";
+  function stored() {
+    try { return localStorage.getItem(KEY); } catch (e) { return null; }
   }
 
   function initialTheme() {
-    try {
-      var stored = localStorage.getItem(STORAGE_KEY);
-      if (stored === "dark" || stored === "light") return stored;
-    } catch (e) { /* private mode */ }
+    var saved = stored();
+    if (valid(saved)) return saved;
     if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
       return "dark";
     }
-    return "light";
+    return "offwhite";
   }
 
+  function applyTheme(choice) {
+    if (choice === "offwhite" || choice === "parchment") {
+      root.setAttribute("data-palette", choice);
+    } else {
+      root.removeAttribute("data-palette");
+    }
+    // The body can be missing when this runs from <head>; init() re-applies it.
+    if (document.body) document.body.classList.toggle(DARK_CLASS, choice === "dark");
+  }
+
+  var start = initialTheme();
+  applyTheme(start); // set the palette before first paint
+
   function init() {
-    if (document.getElementById("qwt-theme-toggle")) return;
-    var theme = initialTheme();
-    applyTheme(theme); // set body class early (button doesn't exist yet, so this only paints the body)
-    var btn = document.createElement("button");
-    btn.id = "qwt-theme-toggle";
-    btn.type = "button";
-    btn.setAttribute("aria-label", "Toggle light/dark mode");
-    btn.addEventListener("click", function () {
-      applyTheme(currentTheme() === "dark" ? "light" : "dark");
+    if (document.getElementById("qwt-theme-select")) return;
+    applyTheme(start);
+    var sel = document.createElement("select");
+    sel.id = "qwt-theme-select";
+    sel.setAttribute("aria-label", "Colour theme");
+    OPTIONS.forEach(function (o) {
+      var opt = document.createElement("option");
+      opt.value = o[0];
+      opt.textContent = o[1];
+      sel.appendChild(opt);
     });
-    document.body.appendChild(btn);
-    applyTheme(theme); // now that the button exists, populate its glyph/aria-pressed
+    sel.value = start;
+    sel.addEventListener("change", function () {
+      applyTheme(sel.value);
+      try { localStorage.setItem(KEY, sel.value); } catch (e) { /* private mode */ }
+    });
+    document.body.appendChild(sel);
   }
 
   if (document.readyState === "loading") {

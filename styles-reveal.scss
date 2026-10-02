@@ -27,6 +27,31 @@
   --qwt-chip-bg-hover: rgba(255, 255, 255, 0.98);
 }
 
+// Off-white and Parchment, the same palettes as the website's theme dropdown
+// (offwhite.scss). qwt-reveal-toggle.html sets data-palette on <html>; Dark
+// stays the body.qwt-dark class below. The attribute selector outranks :root.
+@mixin qwt-palette($bg, $fg, $link, $link-hover, $muted) {
+  --qwt-bg: #{$bg};
+  --qwt-fg: #{$fg};
+  --qwt-heading: #{$fg};
+  --qwt-link: #{$link};
+  --qwt-link-hover: #{$link-hover};
+  --qwt-selection-bg: #{rgba($fg, 0.99)};
+  --qwt-selection-fg: #{$bg};
+  --qwt-border: #{rgba($fg, 0.25)};
+  --qwt-muted: #{$muted};
+  --qwt-chip-bg: #{rgba($bg, 0.85)};
+  --qwt-chip-bg-hover: #{rgba($bg, 0.98)};
+}
+
+html[data-palette="offwhite"] {
+  @include qwt-palette(#f5f2ea, #2b2a27, #1a64b8, #134a88, #5f666d);
+}
+
+html[data-palette="parchment"] {
+  @include qwt-palette(#f1e8d0, #3a2f1f, #8a3b0f, #5e2808, #6b5a43);
+}
+
 body.qwt-dark {
   --qwt-bg: #1c1e20;
   --qwt-fg: #f8f9fa;
