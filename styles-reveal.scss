@@ -14,7 +14,8 @@
   --qwt-bg: #fff;
   --qwt-fg: #000;
   --qwt-heading: #000;
-  --qwt-link: #2a76dd;
+  // reveal.js's #2a76dd is 4.44:1 on white, just under AA.
+  --qwt-link: #1a64b8;
   --qwt-link-hover: #6ca0e8;
   // 0.99 (not 1) is a deliberate carryover from reveal.js's `simple` theme:
   // some browsers render fully-opaque selections on a different compositing
@@ -64,6 +65,51 @@ body.qwt-dark {
   --qwt-muted: rgba(248, 249, 250, 0.7);
   --qwt-chip-bg: rgba(28, 30, 32, 0.85);
   --qwt-chip-bg-hover: rgba(28, 30, 32, 0.98);
+}
+
+// Quarto loads its light syntax colours in every deck, and some of them (the
+// function blue) vanish on the dark page. These are Quarto's own dark token
+// colours, scoped under body.qwt-dark so they outrank the light ones.
+body.qwt-dark .reveal {
+  // Inline code keeps the simple theme's blue, which is 2.6:1 on this page.
+  code:not(pre > code) { color: var(--qwt-fg); }
+  code span.al { color: #f07178; }
+  code span.an { color: #d4d0ab; }
+  code span.at { color: #00e0e0; }
+  code span.bn { color: #d4d0ab; }
+  code span.bu { color: #abe338; }
+  code span.cf { color: #ffa07a; }
+  code span.ch { color: #abe338; }
+  code span.cn { color: #ffd700; }
+  code span.co { color: #f8f8f2; }
+  code span.cv { color: #ffd700; }
+  code span.do { color: #f8f8f2; }
+  code span.dt { color: #ffa07a; }
+  code span.dv { color: #d4d0ab; }
+  code span.er { color: #f07178; }
+  code span.ex { color: #00e0e0; }
+  code span.fl { color: #d4d0ab; }
+  code span.fu { color: #ffa07a; }
+  code span.im { color: #abe338; }
+  code span.kw { color: #ffa07a; }
+  code span.op { color: #ffa07a; }
+  code span.ot { color: #00e0e0; }
+  code span.pp { color: #dcc6e0; }
+  code span.re { color: #f8f8f2; }
+  code span.sc { color: #abe338; }
+  code span.ss { color: #abe338; }
+  code span.st { color: #abe338; }
+  code span.va { color: #00e0e0; }
+  code span.vs { color: #abe338; }
+  code span.wa { color: #dcc6e0; }
+  code span.in { color: #d4d0ab; }
+}
+
+// The code-fold summary ("[R code]") is the text colour softened toward the page,
+// which stays above AA on every palette.
+.reveal details > summary,
+.reveal details > summary p {
+  color: color-mix(in srgb, var(--qwt-fg) 70%, var(--qwt-bg));
 }
 
 .reveal-viewport,
