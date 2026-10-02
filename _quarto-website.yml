@@ -169,6 +169,8 @@ format:
     prefer-html: true
   revealjs:
     output-file: "{stem}-slides.html"
+    filters:
+      - slidebreak
     theme: [simple, styles-reveal.scss]
     include-in-header: qwt-reveal-toggle.html
     slide-number: true
