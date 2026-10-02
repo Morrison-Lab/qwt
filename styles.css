@@ -202,6 +202,13 @@ body.quarto-dark .preview-home-changes-banner a:hover {
   color: #bbdefb;
 }
 
+/* Quarto's secondary grey is too dim on the dark page. */
+body.quarto-dark .code-tools-button,
+body.quarto-dark details > summary,
+body.quarto-dark .breadcrumb-item.active a {
+  color: #adb5bd;
+}
+
 /* Inline code styling for dark mode */
 body.quarto-dark code:not(pre > code) {
   background-color: #404040;
