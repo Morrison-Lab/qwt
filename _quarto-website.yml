@@ -50,7 +50,8 @@ website:
   # order as the navbar and add each new page to both.
   # It leaves out Home on purpose: Quarto highlights the first navbar link
   # whose target appears anywhere in the sidebar, so a Home entry here would
-  # highlight "Home" on every page. To put Home in the previous/next chain,
+  # highlight "Home" on every page. So the chain starts at the first chapter,
+  # and the home page has no "next" link. To put Home in the chain,
   # add it as the first entry and turn on page-navigation.html (see
   # `include-after-body` under `format.html`), which fixes the highlighting.
   sidebar:

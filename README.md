@@ -72,8 +72,8 @@ error when rendering.
 3.  **Edit or create pages** (`.qmd` files):
 
     - Modify files in the `chapters/` directory as needed
-    - Create new pages and add them to the navigation menu in
-      `_quarto-website.yml`
+    - Create new pages and add them to the navigation menu and the
+      sidebar in `_quarto-website.yml`
 
 4.  **Add references** to `references.bib` in BibTeX format
 
@@ -397,9 +397,11 @@ docs](https://quarto.org/docs/websites/website-navigation.html#page-navigation))
 so the template defines a docked sidebar in the same order as the
 navbar. Keep the two in sync: the sidebar order is the reading order.
 
-The sidebar leaves out Home on purpose. Quarto highlights the first
-navbar link whose target appears anywhere in the sidebar, so a Home
-entry in the sidebar would highlight "Home" in the navbar on every page.
+The sidebar leaves out Home on purpose, so by default the previous/next
+chain starts at the first chapter and the home page has no "next" link.
+Quarto highlights the first navbar link whose target appears anywhere
+in the sidebar, so a Home entry in the sidebar would highlight "Home" in
+the navbar on every page.
 
 To link Home into the previous/next chain, and to add floating
 previous/next arrows in the page margins, opt in to
@@ -420,7 +422,7 @@ format:
 
 That script highlights the navbar link (or dropdown) for the current
 page, so Home can sit in the sidebar without the false highlight. The
-arrows sit in the gutters beside the page text and are hidden on narrow
+arrows sit in the space beside the page text and are hidden on narrow
 screens and in print.
 
 ### Custom CSS
