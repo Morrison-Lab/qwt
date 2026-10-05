@@ -73,7 +73,7 @@ quarto --version
 3. **Edit or create pages** (`.qmd` files):
 
    - Modify files in the `chapters/` directory as needed
-   - Create new pages and add them to the navigation menu in `_quarto-website.yml`
+   - Create new pages and add them to the navigation menu and the sidebar in `_quarto-website.yml`
 
 4. **Add references** to `references.bib` in BibTeX format
 
@@ -229,6 +229,7 @@ Validates that all books and articles in bibliography files meet DOI requirement
 ├── references.qmd           # References page
 ├── references.bib           # BibTeX bibliography
 ├── styles.css               # Custom CSS styles
+├── page-navigation.html     # Opt-in previous/next margin arrows and navbar highlighting
 ├── lychee.toml              # Link checker configuration
 ├── .gitignore              # Git ignore file
 ├── LICENSE                  # CC0 1.0 Universal License
@@ -340,7 +341,7 @@ format:
 ### Adding pages
 
 1. Create a new `.qmd` file (e.g., `chapters/chapter3.qmd`)
-2. Add it to the navigation menu in `_quarto-website.yml`:
+2. Add it to the navigation menu and to the sidebar in `_quarto-website.yml`:
 
 ```yaml
 website:
@@ -354,7 +355,48 @@ website:
             href: chapters/chapter2.qmd
           - text: "Chapter 3: Your New Chapter"
             href: chapters/chapter3.qmd
+  sidebar:
+    contents:
+      - section: "Chapters"
+        contents:
+          - chapters/chapter1.qmd
+          - chapters/chapter2.qmd
+          - chapters/chapter3.qmd
 ```
+
+### Page navigation
+
+`website.page-navigation: true` adds previous and next links at the foot of each page.
+Quarto builds those links from the sidebar, not the navbar
+([Quarto docs](https://quarto.org/docs/websites/website-navigation.html#page-navigation)),
+so the template defines a docked sidebar in the same order as the navbar.
+Keep the two in sync: the sidebar order is the reading order.
+
+The sidebar leaves out Home on purpose,
+so by default the previous/next chain starts at the first chapter and the home page has no "next" link.
+Quarto highlights the first navbar link whose target appears anywhere in the sidebar,
+so a Home entry in the sidebar would highlight "Home" in the navbar on every page.
+
+To link Home into the previous/next chain,
+and to add floating previous/next arrows in the page margins,
+opt in to `page-navigation.html`:
+
+```yaml
+website:
+  sidebar:
+    contents:
+      - text: "Home"
+        href: index.qmd
+      - section: "Chapters"
+        # ...
+format:
+  html:
+    include-after-body: page-navigation.html
+```
+
+That script highlights the navbar link (or dropdown) for the current page,
+so Home can sit in the sidebar without the false highlight.
+The arrows sit in the space beside the page text and are hidden on narrow screens and in print.
 
 ### Custom CSS
 

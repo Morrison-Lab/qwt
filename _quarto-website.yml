@@ -22,6 +22,9 @@ website:
   page-footer:
     center: "Built with [Quarto](https://quarto.org/)"
   back-to-top-navigation: true
+  # Previous/next links at the foot of each page follow the sidebar's order,
+  # so page-navigation does nothing without the sidebar below.
+  # https://quarto.org/docs/websites/website-navigation.html#page-navigation
   page-navigation: true
   reader-mode: true
   repo-url: https://github.com/UCD-SERG/qwt
@@ -42,6 +45,24 @@ website:
       - icon: github
         href: https://github.com/UCD-SERG/qwt
         aria-label: GitHub
+
+  # The sidebar sets the previous/next page links, so keep it in the same
+  # order as the navbar and add each new page to both.
+  # It leaves out Home on purpose: Quarto highlights the first navbar link
+  # whose target appears anywhere in the sidebar, so a Home entry here would
+  # highlight "Home" on every page. So the chain starts at the first chapter,
+  # and the home page has no "next" link. To put Home in the chain,
+  # add it as the first entry and turn on page-navigation.html (see
+  # `include-after-body` under `format.html`), which fixes the highlighting.
+  sidebar:
+    style: docked
+    search: false # the navbar already has search
+    contents:
+      - section: "Chapters"
+        contents:
+          - chapters/chapter1.qmd
+          - chapters/chapter2.qmd
+          - chapters/theorem-examples.qmd
 
 callouty-theorem:
   thm:
@@ -144,6 +165,9 @@ format:
       dark: darkly
     # Replaces Quarto's two-way toggle with a Light / Off-white / Parchment / Dark dropdown.
     include-in-header: theme-picker.html
+    # Opt-in: floating previous/next arrows in the page margins, and navbar
+    # highlighting that works when Home is in the sidebar.
+    # include-after-body: page-navigation.html
     css: styles.css
     toc: true
     anchor-sections: true

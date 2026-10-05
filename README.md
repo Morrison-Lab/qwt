@@ -4,7 +4,6 @@
 # qwt (<u>Q</u>uarto <u>W</u>ebsite <u>T</u>emplate)
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 A template repository for creating websites with
@@ -17,7 +16,8 @@ need to quickly start writing your own website.
 - 🎨 **Customizable themes** supporting light and dark modes
 - 🚀 **Automatic deployment** to GitHub Pages via GitHub Actions
 - 🔗 **Automated link checking** to ensure all URLs are reachable
-- �� **Multiple output formats** including HTML, PDF, RevealJS slides, and DOCX
+- 📄 **Multiple output formats** including HTML, PDF, RevealJS slides,
+  and DOCX
 - 📑 **Bibliography support** with BibTeX integration
 - 🔢 **Automatic numbering** of sections and cross-references
 - 💅 **Custom CSS** for styling your website
@@ -72,8 +72,8 @@ error when rendering.
 3.  **Edit or create pages** (`.qmd` files):
 
     - Modify files in the `chapters/` directory as needed
-    - Create new pages and add them to the navigation menu in
-      `_quarto-website.yml`
+    - Create new pages and add them to the navigation menu and the
+      sidebar in `_quarto-website.yml`
 
 4.  **Add references** to `references.bib` in BibTeX format
 
@@ -115,8 +115,7 @@ This template supports multiple output formats in a single render:
 
 This template includes a GitHub Actions workflow
 (`.github/workflows/publish.yml`) that automatically builds and
-publishes your website to GitHub Pages when you push to the main
-branch.
+publishes your website to GitHub Pages when you push to the main branch.
 
 ### Setup steps:
 
@@ -139,9 +138,9 @@ branch.
     .github/scripts/apply-rulesets.sh
     ```
 
-    This protects `main` against direct pushes / force-pushes /
-    deletion and requires a PR to merge. See
-    `.github/rulesets/README.md` for details.
+    This protects `main` against direct pushes / force-pushes / deletion
+    and requires a PR to merge. See `.github/rulesets/README.md` for
+    details.
 
 4.  **Wait for the workflow** to complete (check the Actions tab)
 
@@ -207,8 +206,8 @@ Configures the GitHub Copilot coding agent's environment for:
 - TinyTeX
 - Optional GitHub CLI authentication for
   `https://github.com/d-morrison/macros` (via the `MACROS_REPO_PAT`
-  repository or organization Actions secret; includes a write
-  permission check during setup)
+  repository or organization Actions secret; includes a write permission
+  check during setup)
 
 **Triggers:** Workflow dispatch, changes to the setup file
 
@@ -246,6 +245,7 @@ ensures all citations are properly traceable.
     ├── references.qmd           # References page
     ├── references.bib           # BibTeX bibliography
     ├── styles.css               # Custom CSS styles
+    ├── page-navigation.html     # Opt-in previous/next margin arrows and navbar highlighting
     ├── lychee.toml              # Link checker configuration
     ├── .gitignore              # Git ignore file
     ├── LICENSE                  # CC0 1.0 Universal License
@@ -363,7 +363,8 @@ format:
 ### Adding pages
 
 1.  Create a new `.qmd` file (e.g., `chapters/chapter3.qmd`)
-2.  Add it to the navigation menu in `_quarto-website.yml`:
+2.  Add it to the navigation menu and to the sidebar in
+    `_quarto-website.yml`:
 
 ``` yaml
 website:
@@ -377,7 +378,51 @@ website:
             href: chapters/chapter2.qmd
           - text: "Chapter 3: Your New Chapter"
             href: chapters/chapter3.qmd
+  sidebar:
+    contents:
+      - section: "Chapters"
+        contents:
+          - chapters/chapter1.qmd
+          - chapters/chapter2.qmd
+          - chapters/chapter3.qmd
 ```
+
+### Page navigation
+
+`website.page-navigation: true` adds previous and next links at the foot
+of each page. Quarto builds those links from the sidebar, not the navbar
+([Quarto
+docs](https://quarto.org/docs/websites/website-navigation.html#page-navigation)),
+so the template defines a docked sidebar in the same order as the
+navbar. Keep the two in sync: the sidebar order is the reading order.
+
+The sidebar leaves out Home on purpose, so by default the previous/next
+chain starts at the first chapter and the home page has no "next" link.
+Quarto highlights the first navbar link whose target appears anywhere in
+the sidebar, so a Home entry in the sidebar would highlight "Home" in
+the navbar on every page.
+
+To link Home into the previous/next chain, and to add floating
+previous/next arrows in the page margins, opt in to
+`page-navigation.html`:
+
+``` yaml
+website:
+  sidebar:
+    contents:
+      - text: "Home"
+        href: index.qmd
+      - section: "Chapters"
+        # ...
+format:
+  html:
+    include-after-body: page-navigation.html
+```
+
+That script highlights the navbar link (or dropdown) for the current
+page, so Home can sit in the sidebar without the false highlight. The
+arrows sit in the space beside the page text and are hidden on narrow
+screens and in print.
 
 ### Custom CSS
 

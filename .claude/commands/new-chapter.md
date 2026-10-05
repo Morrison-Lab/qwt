@@ -25,6 +25,8 @@ Steps:
    in `_quarto-website.yml` (read the file first to find the menu; there is no
    `chapters:` key in `_quarto.yml`). Use `text:` for the menu label and
    `href: chapters/<slug>.qmd`.
+   Also add `chapters/<slug>.qmd` to the "Chapters" section of `website.sidebar`
+   in the same position: the sidebar order sets the previous/next page links.
 3. Confirm it renders: `quarto render chapters/<slug>.qmd`.
 
 Style rules (from CLAUDE.md):
