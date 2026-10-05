@@ -20,6 +20,7 @@ Authoritative style guide: [UCD-SERG Lab Manual](https://ucd-serg.github.io/lab-
 - `R/`, `man/`, `DESCRIPTION`, `NAMESPACE` --- the project is also a small R package
 - `references.bib` --- BibTeX bibliography
 - `offwhite.scss`, `theme-picker.html` --- the website's Light / Off-white / Parchment / Dark theme dropdown (`theme-picker.html` builds it, `offwhite.scss` styles the two tinted palettes); the choice is saved under `mln-theme`, shared with the slides and with the other sites on this origin
+- `page-navigation.html` --- opt-in HTML include (off by default; turn on with `format.html.include-after-body`) that adds floating previous/next arrows in the page margins and fixes navbar highlighting when Home is in the sidebar; vendored from [`Morrison-Lab/lbt`](https://github.com/Morrison-Lab/lbt)
 - `styles.css` --- website styling; `styles-reveal.scss`, `qwt-reveal-toggle.html` (the same four-theme dropdown for slides), and the `revealjs-*.lua` filters drive the reveal.js slide output
 - `assets/`, `images/` --- static image and asset files (site pages, docs, CI/PR screenshots)
 - `.github/workflows/` --- CI workflow definitions
@@ -35,6 +36,7 @@ Mirrors [`.github/copilot-instructions.md`](.github/copilot-instructions.md). Ke
 - **Lists of 3+ items**: use bullet lists rather than comma-separated prose. Always leave a blank line before a markdown bullet list (especially in `.qmd` files).
 - **Code chunks**: HTML output folds code by default: `_quarto-website.yml` sets `code-fold: true` (with `code-tools: true`, so readers can show all code at once), as rme does. Keep the default when the *output* (plot, table) is the point and the code is incidental. Set `#| code-fold: false` on tutorial code, short examples, code that is the main focus, and chunks where the console output is the main content.
 - **R style**: respect `.lintr.R`. Run `lintr::lint_dir()` before declaring R changes done.
+- **Navigation**: `_quarto-website.yml` defines a docked sidebar because `page-navigation: true` builds its previous/next links from the sidebar. Add each new page to both the navbar and the sidebar, in the same order. Leave Home out of the sidebar unless `page-navigation.html` is turned on (see the README's "Page navigation" section).
 - **Quarto chunks**: prefer chunk options as YAML-style `#|` directives, not as inline `r, opt = val` arguments.
 
 ## Working in this repo
