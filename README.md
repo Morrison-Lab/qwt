@@ -4,7 +4,6 @@
 # qwt (<u>Q</u>uarto <u>W</u>ebsite <u>T</u>emplate)
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 A template repository for creating websites with
@@ -17,7 +16,8 @@ need to quickly start writing your own website.
 - 🎨 **Customizable themes** supporting light and dark modes
 - 🚀 **Automatic deployment** to GitHub Pages via GitHub Actions
 - 🔗 **Automated link checking** to ensure all URLs are reachable
-- �� **Multiple output formats** including HTML, PDF, RevealJS slides, and DOCX
+- 📄 **Multiple output formats** including HTML, PDF, RevealJS slides,
+  and DOCX
 - 📑 **Bibliography support** with BibTeX integration
 - 🔢 **Automatic numbering** of sections and cross-references
 - 💅 **Custom CSS** for styling your website
@@ -115,8 +115,7 @@ This template supports multiple output formats in a single render:
 
 This template includes a GitHub Actions workflow
 (`.github/workflows/publish.yml`) that automatically builds and
-publishes your website to GitHub Pages when you push to the main
-branch.
+publishes your website to GitHub Pages when you push to the main branch.
 
 ### Setup steps:
 
@@ -139,9 +138,9 @@ branch.
     .github/scripts/apply-rulesets.sh
     ```
 
-    This protects `main` against direct pushes / force-pushes /
-    deletion and requires a PR to merge. See
-    `.github/rulesets/README.md` for details.
+    This protects `main` against direct pushes / force-pushes / deletion
+    and requires a PR to merge. See `.github/rulesets/README.md` for
+    details.
 
 4.  **Wait for the workflow** to complete (check the Actions tab)
 
@@ -207,8 +206,8 @@ Configures the GitHub Copilot coding agent's environment for:
 - TinyTeX
 - Optional GitHub CLI authentication for
   `https://github.com/d-morrison/macros` (via the `MACROS_REPO_PAT`
-  repository or organization Actions secret; includes a write
-  permission check during setup)
+  repository or organization Actions secret; includes a write permission
+  check during setup)
 
 **Triggers:** Workflow dispatch, changes to the setup file
 
@@ -399,8 +398,8 @@ navbar. Keep the two in sync: the sidebar order is the reading order.
 
 The sidebar leaves out Home on purpose, so by default the previous/next
 chain starts at the first chapter and the home page has no "next" link.
-Quarto highlights the first navbar link whose target appears anywhere
-in the sidebar, so a Home entry in the sidebar would highlight "Home" in
+Quarto highlights the first navbar link whose target appears anywhere in
+the sidebar, so a Home entry in the sidebar would highlight "Home" in
 the navbar on every page.
 
 To link Home into the previous/next chain, and to add floating
