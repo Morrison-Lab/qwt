@@ -4,7 +4,7 @@ Code
 
 Published
 
-Last modified: 2026-10-02 11:56:43 (PDT)
+Last modified: 2026-10-06 16:48:55 (PDT)
 
 # Welcome
 
@@ -27,7 +27,7 @@ To use this template:
 
 1.  **Update the configuration**: Edit `_quarto-website.yml` to change the website title, site URL, and navigation menu.
 
-2.  **Add your content**: Create new `.qmd` files for each page and add them to the navigation menu in `_quarto-website.yml`.
+2.  **Add your content**: Create new `.qmd` files for each page and add them to the navigation menu and the sidebar in `_quarto-website.yml` (the sidebar order sets the previous/next page links).
 
 3.  **Customize the style**: Modify `styles.css` to change the appearance of your website.
 
