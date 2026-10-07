@@ -17,15 +17,30 @@ const theoremLikeClasses = new Set([
   "exr",
   "exercise",
   "proof",
+  "rem",
   "remark",
+  "sol",
   "solution"
 ]);
+const theoremLikePrefixes = [
+  "thm-",
+  "lem-",
+  "cor-",
+  "prp-",
+  "cnj-",
+  "def-",
+  "exm-",
+  "exr-",
+  "rem-",
+  "sol-"
+];
 const inlineAnchorSeparator = "\u00A0";
 const maxAnchorRetryAttempts = 5;
 const anchorRetryDelayMs = 50;
 
 const isTheoremLikeDiv = (div) =>
-  Array.from(div.classList).some((className) => theoremLikeClasses.has(className));
+  Array.from(div.classList).some((className) => theoremLikeClasses.has(className)) ||
+  (div.id && theoremLikePrefixes.some((prefix) => div.id.startsWith(prefix)));
 
 const addTheoremLikeDivAnchors = () => {
   for (const theoremDiv of window.document.querySelectorAll("div[id]")) {
@@ -85,7 +100,7 @@ const moveTheoremDivAnchorsInline = () => {
       continue;
     }
 
-    const theoremTitle = theoremDiv.querySelector(".theorem-title");
+    const theoremTitle = theoremDiv.querySelector(".theorem-title, .proof-title");
     if (!theoremTitle) {
       continue;
     }
@@ -107,6 +122,22 @@ const moveTheoremDivAnchorsInline = () => {
     }
 
     anchorLink.classList.remove("external");
+
+    // If the title ends with whitespace (e.g. Quarto's proof-title ending in ". "),
+    // trim the trailing whitespace so the non-breaking separator and anchor stay attached
+    // to the title text, and ensure a trailing space separates the anchor from following content.
+    let lastTextNode = theoremTitle.lastChild;
+    while (lastTextNode && lastTextNode.nodeType !== Node.TEXT_NODE && lastTextNode.lastChild) {
+      lastTextNode = lastTextNode.lastChild;
+    }
+    if (lastTextNode && lastTextNode.nodeType === Node.TEXT_NODE && /\s+$/.test(lastTextNode.textContent)) {
+      lastTextNode.textContent = lastTextNode.textContent.replace(/\s+$/, "");
+      if (theoremTitle.nextSibling &&
+          !(theoremTitle.nextSibling.nodeType === Node.TEXT_NODE && /^\s/.test(theoremTitle.nextSibling.textContent))) {
+        theoremTitle.after(" ");
+      }
+    }
+
     theoremTitle.append(inlineAnchorSeparator);
     theoremTitle.append(anchorLink);
   }

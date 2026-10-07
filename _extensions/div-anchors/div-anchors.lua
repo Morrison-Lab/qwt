@@ -16,9 +16,38 @@ local theorem_div_classes = {
   "exr",
   "exercise",
   "proof",
+  "rem",
   "remark",
+  "sol",
   "solution"
 }
+
+local theorem_id_prefixes = {
+  "thm-",
+  "lem-",
+  "cor-",
+  "prp-",
+  "cnj-",
+  "def-",
+  "exm-",
+  "exr-",
+  "rem-",
+  "sol-"
+}
+
+local function id_is_theorem_like(id)
+  if not id then
+    return false
+  end
+
+  for _, prefix in ipairs(theorem_id_prefixes) do
+    if id:sub(1, #prefix) == prefix then
+      return true
+    end
+  end
+
+  return false
+end
 
 local function class_is_theorem_like(class)
   for _, theorem_class in ipairs(theorem_div_classes) do
@@ -31,6 +60,10 @@ local function class_is_theorem_like(class)
 end
 
 local function is_theorem_div(div)
+  if id_is_theorem_like(div.identifier) then
+    return true
+  end
+
   for _, class in ipairs(div.classes) do
     if class_is_theorem_like(class) then
       return true
