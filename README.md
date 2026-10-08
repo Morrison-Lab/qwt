@@ -160,7 +160,14 @@ cache for reuse by preview builds.
 
 **Triggers:** Push to main branch, manual dispatch
 
-### 🔍 PR Preview Workflow (`preview.yml`)
+### 🔍 PR Preview Workflows (`preview.yml`, `preview-deploy.yml`)
+
+`preview.yml` builds the preview read-only and `preview-deploy.yml`
+publishes it to `gh-pages` and comments the link.
+Both call the shared workflows in
+[`Morrison-Lab/gha`](https://github.com/Morrison-Lab/gha), and
+`publish.yml` calls its `quarto-publish.yml`.
+Previews start working once `preview-deploy.yml` is on `main`.
 
 Creates a preview deployment for pull requests with:
 
@@ -173,15 +180,16 @@ Creates a preview deployment for pull requests with:
 **Triggers:** PR opened, reopened, synchronized, closed, labeled, or
 unlabeled
 
+A preview renders every format `_quarto.yml` declares (HTML, slides,
+PDF handouts and Word), so no label is needed for those.
+
 **Labels:**
 
-- Default preview render is `html` only
-- Add `revealjs` to render slides
-- Add `pdf` to render handouts
-- Add `docx` to render Word output and tracked changes
-- Add `no-preview-highlights` label to disable change highlighting if
-  it's glitchy
-- Add `clear-freezer` label to render without restoring `_freeze` cache
+- Add `no-preview-highlights` to disable change highlighting if it's
+  glitchy
+- Add `clear freezer` to render without restoring the `_freeze` cache (a
+  label with this exact name, space included, must exist on the
+  repository before it can be applied)
 
 ### ✅ Spell Check Workflow (`check-spelling.yaml`)
 
@@ -256,15 +264,12 @@ ensures all citations are properly traceable.
         │   ├── main.json        # Default branch ruleset
         │   └── README.md        # Ruleset documentation
         ├── scripts/             # Scripts for workflows
-        │   ├── add-home-banner.py
-        │   ├── apply-rulesets.sh    # Apply branch rulesets to a new repo
-        │   ├── create-docx-tracked-changes.py
-        │   ├── detect-changed-chapters.py
-        │   ├── highlight-html-changes.py
-        │   └── inject-preview-metadata.py
+        │   ├── add-page-banners.py  # Per-page preview banners (gha#1025)
+        │   └── apply-rulesets.sh    # Apply branch rulesets to a new repo
         └── workflows/           # GitHub Actions workflows
             ├── publish.yml      # Build and deploy to GitHub Pages
             ├── preview.yml      # PR preview with change highlighting
+            ├── preview-deploy.yml  # Publish the PR preview to gh-pages
             ├── check-spelling.yaml  # Spell checking
             ├── lint-project.yaml    # R code linting
             ├── copilot-setup-steps.yml  # GitHub Copilot setup
