@@ -27,6 +27,10 @@ import sys
 from pathlib import Path
 
 
+# Written before the banners, so a re-run over its own output adds nothing.
+BANNER_MARKER = "<!-- qwt-page-banners -->"
+
+
 def fail(message):
     print(f"::error::{message}", file=sys.stderr)
     sys.exit(1)
@@ -111,11 +115,14 @@ def add_page_banners(html_path, html_dir, index_path, changed):
         print(f"  No banners to add for {rel_path}")
         return
     html = html_path.read_text(encoding="utf-8")
+    if BANNER_MARKER in html:
+        print(f"  Banners already present in {rel_path}; skipped")
+        return
     main_match = re.search(r"(<main[^>]*>)", html)
     if not main_match:
         print(f"  No <main> in {rel_path}; banners skipped")
         return
-    html = html[: main_match.end()] + combined + html[main_match.end():]
+    html = html[: main_match.end()] + BANNER_MARKER + combined + html[main_match.end():]
     html_path.write_text(html, encoding="utf-8")
     print(f"  Added banner(s) to {rel_path}")
 
