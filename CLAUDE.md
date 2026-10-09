@@ -6,7 +6,10 @@ Project guidance for Claude Code (CLI, IDE, and the GitHub Action). The same con
 
 `qwt` (Quarto Website Template) is a template repository for [Quarto](https://quarto.org/) websites maintained by the UCD-SERG lab. Downstream repos are created from this template via the GitHub "Use this template" button, so changes here propagate to new books.
 
-Authoritative style guide: [UCD-SERG Lab Manual](https://ucd-serg.github.io/lab-manual/) (source: <https://github.com/UCD-SERG/lab-manual>).
+Authoritative style guides:
+
+- [UCD-SERG Lab Manual](https://ucd-serg.github.io/lab-manual/) (source: <https://github.com/UCD-SERG/lab-manual>)
+- [*Principles of Scientific Writing*](https://d-morrison.github.io/psw/) (source: <https://github.com/d-morrison/psw>), for prose
 
 ## Repository layout
 
