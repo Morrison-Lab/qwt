@@ -1,3 +1,3 @@
-[submodule "macros"]
-	path = macros
-	url = https://github.com/d-morrison/macros
+[submodule "latex-macros"]
+	path = latex-macros
+	url = https://github.com/Morrison-Lab/macros

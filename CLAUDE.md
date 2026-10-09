@@ -16,7 +16,7 @@ Authoritative style guide: [UCD-SERG Lab Manual](https://ucd-serg.github.io/lab-
   normal site build
 - `_quarto.yml`, `_quarto-website.yml` --- Quarto project + website config
 - `_extensions/` --- vendored Quarto extensions (including `code-language-labels`, which labels each code block with its language in HTML and revealjs output; vendored from [`d-morrison/code-language-labels`](https://github.com/d-morrison/code-language-labels))
-- `macros/` --- git submodule for shortcode/macro definitions (see `.gitmodules`)
+- `latex-macros/` --- git submodule for shortcode/macro definitions (see `.gitmodules`)
 - `R/`, `man/`, `DESCRIPTION`, `NAMESPACE` --- the project is also a small R package
 - `references.bib` --- BibTeX bibliography
 - `offwhite.scss`, `theme-picker.html` --- the website's Light / Off-white / Parchment / Dark theme dropdown (`theme-picker.html` builds it, `offwhite.scss` styles the two tinted palettes); the choice is saved under `mln-theme`, shared with the slides and with the other sites on this origin
@@ -43,11 +43,11 @@ Mirrors [`.github/copilot-instructions.md`](.github/copilot-instructions.md). Ke
 
 - **Don't edit generated files**: `README.md` is built from `README.Rmd`; `_site/` and `_freeze/` are build outputs.
 - **Local preview**: `quarto preview` (live reload). Full build: `quarto render`. When verifying a single edited page, render just that page (`quarto render <file>.qmd --to html`) rather than the whole site --- the `/render` command is for the full build.
-- **Submodules**: `macros/` is the only git submodule (see `.gitmodules`). Run `git submodule update --init --recursive` after cloning.
+- **Submodules**: `latex-macros/` is the only git submodule (see `.gitmodules`). Run `git submodule update --init --recursive` after cloning.
 - **Spell check**: words go in `inst/WORDLIST` (see `.github/workflows/check-spelling.yaml`). Update the wordlist instead of disabling the check.
 - **Link check**: tuned in `lychee.toml`; prefer fixing broken links over adding exceptions.
 - **Other CI checks**: workflows also verify bibliography DOIs (`check-bibliography-dois.yml`) and flag non-standard characters (`check-non-standard-chars.yaml`). Fix the flagged source rather than relaxing the check.
-- **Dependencies**: Dependabot auto-updates the `macros` submodule and GitHub Actions (see `.github/dependabot.yml`); don't bump those by hand unless a PR needs it.
+- **Dependencies**: Dependabot auto-updates the `latex-macros` submodule and GitHub Actions (see `.github/dependabot.yml`); don't bump those by hand unless a PR needs it.
 
 ## ai-config plugin
 
