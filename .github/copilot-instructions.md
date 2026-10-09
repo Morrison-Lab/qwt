@@ -8,8 +8,8 @@ Follow the guidance in the [UCD-SERG Lab Manual](https://ucd-serg.github.io/lab-
 
 The source files for the lab manual are available at <https://github.com/UCD-SERG/lab-manual> if easier to read.
 
-For prose, also follow [*Principles of Scientific Writing*](https://d-morrison.github.io/psw/)
-(source: <https://github.com/d-morrison/psw>).
+For prose, also follow [*Principles of Scientific Writing*](https://morrison-lab.github.io/psw/)
+(source: <https://github.com/Morrison-Lab/psw>).
 
 For workflow fixes, do not restrict the publish workflow render target to HTML only.
 Keep publish rendering all configured formats and fix underlying failures instead.

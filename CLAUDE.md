@@ -9,7 +9,7 @@ Project guidance for Claude Code (CLI, IDE, and the GitHub Action). The same con
 Authoritative style guides:
 
 - [UCD-SERG Lab Manual](https://ucd-serg.github.io/lab-manual/) (source: <https://github.com/UCD-SERG/lab-manual>)
-- [*Principles of Scientific Writing*](https://d-morrison.github.io/psw/) (source: <https://github.com/d-morrison/psw>), for prose
+- [*Principles of Scientific Writing*](https://morrison-lab.github.io/psw/) (source: <https://github.com/Morrison-Lab/psw>), for prose
 
 ## Repository layout
 
