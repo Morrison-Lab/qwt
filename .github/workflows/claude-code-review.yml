@@ -47,10 +47,10 @@ jobs:
     secrets:
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}   # Max-plan OAuth; empty when using API key
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}               # direct API key; empty when using OAuth
-      SUBMODULES_TOKEN: ${{ secrets.SUBMODULES_TOKEN }}   # optional; macros/ is public, so unset is fine
+      SUBMODULES_TOKEN: ${{ secrets.SUBMODULES_TOKEN }}   # optional; latex-macros/ is public, so unset is fine
     with:
       pr-number: ${{ inputs.pr_number }}
-      checkout-submodules: true  # macros/ so the reviewer can read it, not report it "not initialized"
+      checkout-submodules: true  # latex-macros/ so the reviewer can read it, not report it "not initialized"
       # `claude` is included because a remote Claude session pushing a
       # commit directly to a PR fires `synchronize` with `claude` as the
       # actor, and a dispatched review's actor is `github-actions[bot]`

@@ -57,8 +57,8 @@ jobs:
     secrets:
       CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}   # Max-plan OAuth; empty when using API key
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}               # direct API key; empty when using OAuth
-      SUBMODULES_TOKEN: ${{ secrets.SUBMODULES_TOKEN }}   # optional; macros/ is public, so unset is fine
+      SUBMODULES_TOKEN: ${{ secrets.SUBMODULES_TOKEN }}   # optional; latex-macros/ is public, so unset is fine
       WORKFLOW_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}       # optional; for editing .github/workflows
     with:
       install-quarto: true      # qwt is a Quarto site; Claude may need to render .qmd files
-      checkout-submodules: true # macros/ (public; no SUBMODULES_TOKEN needed)
+      checkout-submodules: true # latex-macros/ (public; no SUBMODULES_TOKEN needed)
