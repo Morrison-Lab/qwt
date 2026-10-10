@@ -213,7 +213,7 @@ Configures the GitHub Copilot coding agent's environment for:
 - Quarto
 - TinyTeX
 - Optional GitHub CLI authentication for
-  `https://github.com/d-morrison/macros` (via the `MACROS_REPO_PAT`
+  `https://github.com/Morrison-Lab/macros` (via the `MACROS_REPO_PAT`
   repository or organization Actions secret; includes a write permission
   check during setup)
 
@@ -258,7 +258,7 @@ ensures all citations are properly traceable.
     ├── .gitignore              # Git ignore file
     ├── LICENSE                  # CC0 1.0 Universal License
     ├── README.md               # This file
-    ├── macros/                 # Git submodule: d-morrison/macros
+    ├── latex-macros/           # Git submodule: Morrison-Lab/macros
     └── .github/
         ├── rulesets/            # Branch ruleset definitions
         │   ├── main.json        # Default branch ruleset

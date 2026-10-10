@@ -7,11 +7,11 @@ project:
     - "!README.md"
     - "!appendix-document-metadata.qmd"
     - "!references.qmd"
-    # The `macros` git submodule provides macro definitions for include/
+    # The `latex-macros` git submodule provides macro definitions for include/
     # shortcode use, not standalone site pages. Don't render its .qmd files
     # directly: macros-table.qmd uses DT::datatable() (an HTML widget) that
     # errors when the project also renders to PDF.
-    - "!macros/"
+    - "!latex-macros/"
 
 website:
   title: "Quarto Website Template"
