@@ -271,7 +271,11 @@ panel. Pin table text and headers to dark ink with transparent backgrounds. */
   --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
 }
 
-.widget-panel table thead tr th {
+/* The two longer selectors out-rank Quarto's (0,1,5) rule when the panel and
+`div.observablehq` are nested in either order; the short one alone loses. */
+.widget-panel table thead tr th,
+div.observablehq .widget-panel table thead tr th,
+.widget-panel div.observablehq table thead tr th {
   background-color: transparent;
   color: #222;
   border-bottom: 2px solid #adb5bd;
