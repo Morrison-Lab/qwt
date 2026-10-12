@@ -253,7 +253,7 @@ ensures all citations are properly traceable.
     ├── references.qmd           # References page
     ├── references.bib           # BibTeX bibliography
     ├── styles.css               # Custom CSS styles
-    ├── page-navigation.html     # Opt-in previous/next margin arrows and navbar highlighting
+    ├── page-navigation.html     # Previous/next margin arrows and navbar highlighting
     ├── lychee.toml              # Link checker configuration
     ├── .gitignore              # Git ignore file
     ├── LICENSE                  # CC0 1.0 Universal License
@@ -401,33 +401,16 @@ docs](https://quarto.org/docs/websites/website-navigation.html#page-navigation))
 so the template defines a docked sidebar in the same order as the
 navbar. Keep the two in sync: the sidebar order is the reading order.
 
-The sidebar leaves out Home on purpose, so by default the previous/next
-chain starts at the first chapter and the home page has no "next" link.
-Quarto highlights the first navbar link whose target appears anywhere in
-the sidebar, so a Home entry in the sidebar would highlight "Home" in
-the navbar on every page.
+The sidebar starts with Home, so the previous/next chain starts at the
+home page. Quarto highlights the first navbar link whose target appears
+anywhere in the sidebar, so a Home entry in the sidebar would highlight
+"Home" in the navbar on every page.
 
-To link Home into the previous/next chain, and to add floating
-previous/next arrows in the page margins, opt in to
-`page-navigation.html`:
-
-``` yaml
-website:
-  sidebar:
-    contents:
-      - text: "Home"
-        href: index.qmd
-      - section: "Chapters"
-        # ...
-format:
-  html:
-    include-after-body: page-navigation.html
-```
-
-That script highlights the navbar link (or dropdown) for the current
-page, so Home can sit in the sidebar without the false highlight. The
-arrows sit in the space beside the page text and are hidden on narrow
-screens and in print.
+`page-navigation.html`, included under `format.html` with
+`include-after-body`, corrects the highlighting: it highlights the
+navbar link (or dropdown) for the current page. It also adds floating
+previous/next arrows in the page margins. The arrows sit in the space
+beside the page text and are hidden on narrow screens and in print.
 
 ### Custom CSS
 
