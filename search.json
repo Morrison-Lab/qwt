@@ -4,42 +4,60 @@
     "href": "index.html",
     "title": "Quarto Website Template",
     "section": "",
-    "text": "This is a Quarto website template that you can use to create your own website.\nThe notes are available in multiple formats:\n\nHTML Website: Navigate using the navbar for easy access to all pages\nRevealJS Slides: Each chapter can generate a presentation format with -slides.html suffix\nPDF Handouts: Each chapter can generate a PDF handout with -handout.pdf suffix\nDOCX Documents: Each chapter can generate a Microsoft Word document with .docx extension\n\n\n\nThis website is built with Quarto, an open-source scientific and technical publishing system. You can use Quarto to create books, websites, blogs, presentations, and more from markdown files.\n\n\n\nTo use this template:\n\nUpdate the configuration: Edit _quarto-website.yml to change the website title, site URL, and navigation menu.\nAdd your content: Create new .qmd files for each page and add them to the navigation menu and the sidebar in _quarto-website.yml (the sidebar order sets the previous/next page links).\nCustomize the style: Modify styles.css to change the appearance of your website.\nAdd references: Update references.bib with your citations.\n\n\n\n\nTo render the website locally:\nquarto render\nTo preview the website with live reload:\nquarto preview\nThe rendered output will be in the _site/ directory, which can be published to GitHub Pages.\n\n\n\nThis template includes a GitHub Actions workflow that automatically builds and publishes your website to GitHub Pages when you push to the main branch.\nTo enable GitHub Pages:\n\nGo to your repository settings\nNavigate to “Pages” in the left sidebar\nUnder “Build and deployment”, set Source to “GitHub Actions”\nPush your changes to the main branch\nThe workflow will automatically build and deploy your website\n\nYour website will be available at https://YOUR-USERNAME.github.io/YOUR-REPO/\n\n\n\nAdd your license information here."
+    "text": "This is a Quarto website template that you can use to create your own website.\nThe notes are available in multiple formats:\n\nHTML Website: Navigate using the navbar for easy access to all pages\nRevealJS Slides: Each chapter can generate a presentation format with -slides.html suffix\nPDF Handouts: Each chapter can generate a PDF handout with -handout.pdf suffix\nDOCX Documents: Each chapter can generate a Microsoft Word document with .docx extension\n\n\n\nThis website is built with Quarto, an open-source scientific and technical publishing system. You can use Quarto to create books, websites, blogs, presentations, and more from markdown files.\n\n\n\nTo use this template:\n\nUpdate the configuration: Edit _quarto-website.yml to change the website title, site URL, and navigation menu.\nAdd your content: Create new .qmd files for each page and add them to the navigation menu and the sidebar in _quarto-website.yml (the sidebar order sets the previous/next page links).\nCustomize the style: Modify styles.css to change the appearance of your website.\nAdd references: Update references.bib with your citations.\n\n\n\n\nTo render the website locally:\nquarto render\nTo preview the website with live reload:\nquarto preview\nThe rendered output will be in the _site/ directory, which can be published to GitHub Pages.\n\n\n\nThis template includes a GitHub Actions workflow that automatically builds and publishes your website to GitHub Pages when you push to the main branch.\nTo enable GitHub Pages:\n\nGo to your repository settings\nNavigate to “Pages” in the left sidebar\nUnder “Build and deployment”, set Source to “GitHub Actions”\nPush your changes to the main branch\nThe workflow will automatically build and deploy your website\n\nYour website will be available at https://YOUR-USERNAME.github.io/YOUR-REPO/\n\n\n\nAdd your license information here.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#about-this-website",
     "href": "index.html#about-this-website",
     "title": "Quarto Website Template",
     "section": "",
-    "text": "This website is built with Quarto, an open-source scientific and technical publishing system. You can use Quarto to create books, websites, blogs, presentations, and more from markdown files."
+    "text": "This website is built with Quarto, an open-source scientific and technical publishing system. You can use Quarto to create books, websites, blogs, presentations, and more from markdown files.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#getting-started",
     "href": "index.html#getting-started",
     "title": "Quarto Website Template",
     "section": "",
-    "text": "To use this template:\n\nUpdate the configuration: Edit _quarto-website.yml to change the website title, site URL, and navigation menu.\nAdd your content: Create new .qmd files for each page and add them to the navigation menu and the sidebar in _quarto-website.yml (the sidebar order sets the previous/next page links).\nCustomize the style: Modify styles.css to change the appearance of your website.\nAdd references: Update references.bib with your citations."
+    "text": "To use this template:\n\nUpdate the configuration: Edit _quarto-website.yml to change the website title, site URL, and navigation menu.\nAdd your content: Create new .qmd files for each page and add them to the navigation menu and the sidebar in _quarto-website.yml (the sidebar order sets the previous/next page links).\nCustomize the style: Modify styles.css to change the appearance of your website.\nAdd references: Update references.bib with your citations.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#building-the-website",
     "href": "index.html#building-the-website",
     "title": "Quarto Website Template",
     "section": "",
-    "text": "To render the website locally:\nquarto render\nTo preview the website with live reload:\nquarto preview\nThe rendered output will be in the _site/ directory, which can be published to GitHub Pages."
+    "text": "To render the website locally:\nquarto render\nTo preview the website with live reload:\nquarto preview\nThe rendered output will be in the _site/ directory, which can be published to GitHub Pages.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#publishing-to-github-pages",
     "href": "index.html#publishing-to-github-pages",
     "title": "Quarto Website Template",
     "section": "",
-    "text": "This template includes a GitHub Actions workflow that automatically builds and publishes your website to GitHub Pages when you push to the main branch.\nTo enable GitHub Pages:\n\nGo to your repository settings\nNavigate to “Pages” in the left sidebar\nUnder “Build and deployment”, set Source to “GitHub Actions”\nPush your changes to the main branch\nThe workflow will automatically build and deploy your website\n\nYour website will be available at https://YOUR-USERNAME.github.io/YOUR-REPO/"
+    "text": "This template includes a GitHub Actions workflow that automatically builds and publishes your website to GitHub Pages when you push to the main branch.\nTo enable GitHub Pages:\n\nGo to your repository settings\nNavigate to “Pages” in the left sidebar\nUnder “Build and deployment”, set Source to “GitHub Actions”\nPush your changes to the main branch\nThe workflow will automatically build and deploy your website\n\nYour website will be available at https://YOUR-USERNAME.github.io/YOUR-REPO/",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index.html#license",
     "href": "index.html#license",
     "title": "Quarto Website Template",
     "section": "",
-    "text": "Add your license information here."
+    "text": "Add your license information here.",
+    "crumbs": [
+      "Home"
+    ]
   },
   {
     "objectID": "index-slides.html#about-this-website",
