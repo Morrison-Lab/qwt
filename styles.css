@@ -235,3 +235,115 @@ body.quarto-dark code:not(pre > code) {
 .equation-anchor:hover {
   opacity: 1;
 }
+
+/* In a narrow panel column the number box beside a slider shrank to 56px,
+which cut a value like -0.05 short. Keep it wide enough to read. The floor
+takes width from the slider, so it applies only on screens wide enough to
+spare it; on a phone it would leave the slider about 20px wide. */
+@media (min-width: 768px) {
+  .widget-panel input[type="number"] {
+    min-width: 4.5em;
+  }
+}
+
+/* Interactive widgets sit on a light panel (`.widget-panel`), so their text is
+dark. The dark theme gives text boxes a dark background, which hid the numbers
+beside each slider; keep the boxes light inside a panel. The reveal.js theme
+already leaves these boxes white, so the slides need no counterpart. */
+body.quarto-dark .widget-panel input[type="number"],
+body.quarto-dark .widget-panel input[type="text"],
+body.quarto-dark .widget-panel select {
+  background-color: #fff;
+  color: #222;
+  border: 1px solid #adb5bd;
+}
+
+/* Tables inside light widget panels: Quarto's dark theme sets
+`div.observablehq table thead tr th { background-color: var(--bs-body-bg); }`
+which resolves to dark (#222), hiding the table header against the light
+panel. Pin table text and headers to dark ink with transparent backgrounds. */
+.widget-panel table {
+  color: #222;
+  --bs-table-color: #222;
+  --bs-table-bg: transparent;
+  --bs-table-border-color: #dee2e6;
+  --bs-table-striped-color: #222;
+  --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+}
+
+.widget-panel table thead tr th {
+  background-color: transparent;
+  color: #222;
+  border-bottom: 2px solid #adb5bd;
+}
+
+.widget-panel table th,
+.widget-panel table td {
+  color: #222;
+  border-color: #dee2e6;
+}
+
+/* Phone-width overflow (#26).
+ * A callout body is a flex item, and a flex item's default `min-width: auto`
+ * lets wide content (display math, code, a long URL) stretch the whole
+ * callout past the viewport, so the page scrolls sideways. `min-width: 0`
+ * keeps the callout at the column width; the rules below then contain what
+ * is still too wide. */
+.callout-body-container {
+  min-width: 0;
+}
+
+/* Scroll a too-wide equation inside its own box instead of widening the page.
+ * MathJax sets an inline `min-width` on a numbered equation, sized to fit the
+ * equation and its number side by side; `!important` is the only way to
+ * override an inline style from a stylesheet. */
+mjx-container[display="true"] {
+  max-width: 100%;
+  min-width: 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Let long unbroken link text (bare URLs) wrap. */
+main a {
+  overflow-wrap: break-word;
+}
+
+/* On a phone, scroll a too-wide table inside its own box. `display: block`
+ * would shrink a full-width table to its content on wider screens, so it
+ * applies only below Bootstrap's `sm` breakpoint. */
+@media (max-width: 575.98px) {
+  main table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+/* Number the lines of every code block, so a line can be named in class.
+   Quarto's own `code-line-numbers: true` would do this, but downlit cannot link
+   R functions to their documentation (`code-link`) in a numbered block, so the
+   numbers are drawn here instead, from the one <span> Quarto writes per line.
+   The ::before text is not part of the code, so copying a block leaves it out.
+   Slide decks number their lines themselves (`pre.number-lines`). */
+pre.sourceCode:not(.number-lines) > code {
+  counter-reset: code-line;
+}
+
+pre.sourceCode:not(.number-lines) > code > span {
+  counter-increment: code-line;
+}
+
+pre.sourceCode:not(.number-lines) > code > span::before {
+  content: counter(code-line);
+  /* Empty alternative text: screen readers skip the number. Browsers that
+     do not know this syntax drop the line and keep the one above. */
+  content: counter(code-line) / "";
+  display: inline-block;
+  width: 2em;
+  margin-right: 1em;
+  text-align: right;
+  text-indent: 0;
+  opacity: 0.5;
+  user-select: none;
+}
