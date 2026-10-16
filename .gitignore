@@ -10,6 +10,7 @@
 !qwt-reveal-toggle.html
 !theme-picker.html
 !page-navigation.html
+!anchor-landing.html
 *_files/
 site_libs/
 
@@ -78,4 +79,3 @@ renv/staging/
 # Lychee link checker
 .lycheecache/
 lychee-output/
-!anchor-landing.html
