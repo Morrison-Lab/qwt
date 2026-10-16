@@ -16,7 +16,7 @@ name: Quarto Check Equation Renders
 # secrets, then deploys from the base-repo context on `workflow_run`. Merging
 # the two halves into one `pull_request_target` job is the pattern zizmor's
 # warning is really aimed at, and is what this design exists to avoid.
-on:  # zizmor: ignore[dangerous-triggers]
+on:  # zizmor: ignore[dangerous-triggers] -- build and check are split on purpose; see header
   workflow_run:
     workflows: ["Quarto Preview Build"]
     types: [completed]
