@@ -12,7 +12,7 @@
 # serializes gh-pages deploys itself.
 name: Quarto Preview Deploy
 
-on:
+on:  # zizmor: ignore[dangerous-triggers] -- build and deploy are split on purpose; see header
   workflow_run:
     workflows: ["Quarto Preview Build"]
     types: [completed]

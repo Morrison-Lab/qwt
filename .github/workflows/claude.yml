@@ -20,7 +20,7 @@
 
 name: Claude Code
 
-on:
+on:  # zizmor: ignore[dangerous-triggers] -- gated by the actor check below
   issue_comment:
     types: [created]
   pull_request_review_comment:
