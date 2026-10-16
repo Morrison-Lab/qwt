@@ -54,4 +54,4 @@ jobs:
     name: check-ai-tells
     needs: filter
     if: needs.filter.outputs.run_check == 'false'
-    uses: ./.github/workflows/_check-ai-tells-bypass-reusable.yml # zizmor: ignore[self-repository]
+    uses: ./.github/workflows/_check-ai-tells-bypass-reusable.yml # zizmor: ignore[self-repository] -- the bypass job lives in this repository on purpose, so the status name always reports
