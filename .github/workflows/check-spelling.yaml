@@ -16,10 +16,12 @@ jobs:
     permissions:
       contents: read
     container:
-      image: rocker/verse:latest
+      image: rocker/verse:latest  # zizmor: ignore[unpinned-images] -- tracks the current R toolchain on purpose
     steps:
       - name: Checkout repo
         uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - name: Run Spelling Check test
         uses: insightsengineering/r-spellcheck-action@v3.0.3
