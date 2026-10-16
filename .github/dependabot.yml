@@ -8,7 +8,9 @@
 # than a pinned release tag.
 version: 2
 updates:
-  - package-ecosystem: "gitsubmodule"
+  # No cooldown on the submodule, deliberately: `latex-macros` is first-party and
+  # tracked at `main` on purpose, so delaying it gains nothing.
+  - package-ecosystem: "gitsubmodule"  # zizmor: ignore[dependabot-cooldown]
     directory: "/"
     schedule:
       interval: "weekly"
@@ -24,3 +26,8 @@ updates:
       interval: "weekly"
     commit-message:
       prefix: "chore(actions)"
+    # Wait before adopting a new release, so a compromised or broken one is
+    # not pulled in the hour it ships. `default-days` only: the semver-*
+    # variants are rejected for the github-actions ecosystem.
+    cooldown:
+      default-days: 7

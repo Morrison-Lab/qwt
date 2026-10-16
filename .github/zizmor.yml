@@ -1,0 +1,21 @@
+# zizmor configuration for qwt.
+#
+# See https://docs.zizmor.sh/configuration/. `lint-workflows.yml` runs zizmor
+# in its default `regular` persona; this file adjusts one audit and nothing
+# else.
+rules:
+  unpinned-uses:
+    config:
+      policies:
+        # Accept a tag or release pin; keep flagging a branch pin such as
+        # `@main` or `@HEAD`.
+        #
+        # zizmor's blanket default demands a commit-SHA pin for every action.
+        # That is a reasonable default and it is not this repo's policy for
+        # first-party reusable workflows: `.github/dependabot.yml` runs the
+        # `github-actions` updater weekly so tag pins stay current.
+        #
+        # `ref-pin` keeps the part of the audit that catches a real problem:
+        # a branch pin such as `@main` or `@HEAD`, which moves under you with no
+        # review and no dependabot PR.
+        "*": ref-pin

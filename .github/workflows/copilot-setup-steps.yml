@@ -76,6 +76,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v7
         with:
+          persist-credentials: false
           submodules: true
 
       # Install system dependencies needed for this project, including:
