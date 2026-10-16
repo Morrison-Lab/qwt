@@ -169,7 +169,9 @@ format:
     # Floating previous/next arrows in the page margins, and navbar
     # highlighting for the current page (needed because Home is in the
     # sidebar).
-    include-after-body: page-navigation.html
+    include-after-body:
+      - page-navigation.html
+      - anchor-landing.html
     css: styles.css
     toc: true
     anchor-sections: true
