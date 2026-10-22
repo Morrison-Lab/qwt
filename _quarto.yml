@@ -27,7 +27,7 @@ filters:
 format:
   pdf:
     filters:
-      - sun123zxy/callouty-theorem
+      - Morrison-Lab/callouty-theorem
       - coatless-quarto/custom-callout
     include-in-header:
       text: |

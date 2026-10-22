@@ -159,7 +159,7 @@ custom-callout:
 format:
   html:
     filters:
-      - sun123zxy/callouty-theorem
+      - Morrison-Lab/callouty-theorem
       - coatless-quarto/custom-callout
     theme:
       light: [cosmo, offwhite.scss]
