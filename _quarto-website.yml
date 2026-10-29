@@ -59,8 +59,7 @@ website:
   # corrects that.
   sidebar:
     style: docked
-    # sections start folded (no effect while this sidebar has no sections;
-    # kept for parity with lds, mds, pds and sds); the current page's section
+    # sections are collapsible and start folded; the current page's section
     # stays open (collapse-level 1 folds every depth, default 2 opens depth 1)
     collapse-level: 1
     search: false # the navbar already has search
