@@ -1,0 +1,361 @@
+/* Custom styles for your Quarto book */
+
+/* Add your custom CSS here to override default styles */
+
+/* Example: Customize heading colors */
+/*
+h1 {
+  color: #2c3e50;
+}
+
+h2 {
+  color: #34495e;
+}
+*/
+
+/* Example: Add custom margin to paragraphs */
+/*
+p {
+  margin-bottom: 1.2em;
+}
+*/
+
+/* Example: Style code blocks */
+/*
+pre {
+  background-color: #f6f8fa;
+  border-radius: 6px;
+  padding: 16px;
+}
+*/
+
+/* Example: Customize callout boxes */
+/*
+.callout {
+  border-left: 4px solid #007bff;
+  padding-left: 1em;
+}
+*/
+
+/* PR Preview Feature Styles */
+
+/* Preview combined banner (replaces both file-level and content-level banners) */
+.preview-combined-banner {
+  background-color: #fff3cd;
+  border-left: 4px solid #ffc107;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.preview-combined-banner a {
+  color: #0066cc;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.preview-combined-banner a:hover {
+  color: #0052a3;
+}
+
+/* Dark mode support for combined banner */
+body.quarto-dark .preview-combined-banner {
+  background-color: #3d3d00;
+  border-left-color: #ffeb3b;
+  color: #ffd700;
+}
+
+body.quarto-dark .preview-combined-banner a {
+  color: #64b5f6;
+}
+
+body.quarto-dark .preview-combined-banner a:hover {
+  color: #90caf9;
+}
+
+/* Legacy banner styles (kept for backward compatibility) */
+.preview-changed-banner {
+  background-color: #fff3cd;
+  border-left: 4px solid #ffc107;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Dark mode support for legacy preview banner */
+body.quarto-dark .preview-changed-banner {
+  background-color: #3d3d00;
+  border-left-color: #ffeb3b;
+  color: #ffd700;
+}
+
+.preview-content-changed-notice {
+  background-color: #e7f3ff;
+  border-left: 4px solid #2196F3;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Dark mode support for content change notice */
+body.quarto-dark .preview-content-changed-notice {
+  background-color: #1a3a52;
+  border-left-color: #64b5f6;
+  color: #90caf9;
+}
+
+/* Inline text highlighting for changed content */
+mark.preview-text-changed {
+  background-color: #ffeb3b;
+  border-bottom: 2px solid #ffc107;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+mark.preview-text-added {
+  background-color: #a5d6a7;
+  border-bottom: 2px solid #66bb6a;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+mark.preview-element-added {
+  background-color: #bbdefb;
+  border-left: 4px solid #42a5f5;
+  padding-left: 8px;
+  display: inline;
+  font-weight: 500;
+}
+
+/* Dark mode support for inline highlights */
+body.quarto-dark mark.preview-text-changed {
+  background-color: #fdd835;
+  border-bottom-color: #fbc02d;
+  color: #000;
+}
+
+body.quarto-dark mark.preview-text-added {
+  background-color: #66bb6a;
+  border-bottom-color: #43a047;
+  color: #000;
+}
+
+body.quarto-dark mark.preview-element-added {
+  background-color: #42a5f5;
+  border-left-color: #1e88e5;
+  color: #000;
+}
+
+/* Table of contents highlighting for changed chapters */
+a.preview-toc-changed {
+  background-color: #fff3cd;
+  border-left: 3px solid #ffc107;
+  padding-left: 4px;
+  font-weight: 600;
+}
+
+/* Dark mode support for TOC highlighting */
+body.quarto-dark a.preview-toc-changed {
+  background-color: #3d3d00;
+  border-left-color: #ffeb3b;
+  color: #ffd700;
+}
+
+/* Home page banner for changed chapters */
+.preview-home-changes-banner {
+  background-color: #e3f2fd;
+  border-left: 4px solid #2196F3;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.preview-home-changes-banner a {
+  color: #1976d2;
+  text-decoration: underline;
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.preview-home-changes-banner a:hover {
+  color: #0d47a1;
+}
+
+/* Dark mode support for home banner */
+body.quarto-dark .preview-home-changes-banner {
+  background-color: #0d47a1;
+  border-left-color: #64b5f6;
+  color: #e3f2fd;
+}
+
+body.quarto-dark .preview-home-changes-banner a {
+  color: #90caf9;
+}
+
+body.quarto-dark .preview-home-changes-banner a:hover {
+  color: #bbdefb;
+}
+
+/* Quarto's secondary grey is too dim on the dark page. */
+body.quarto-dark .code-tools-button,
+body.quarto-dark details > summary,
+body.quarto-dark .breadcrumb-item.active,
+body.quarto-dark .breadcrumb-item.active a {
+  color: #adb5bd;
+}
+
+/* Inline code styling for dark mode */
+body.quarto-dark code:not(pre > code) {
+  background-color: #404040;
+  color: #e6e6e6;
+}
+
+.equation-anchor-target {
+  --equation-anchor-offset: 1.2rem;
+  position: relative;
+  display: block;
+}
+
+.equation-anchor {
+  position: absolute;
+  right: calc(-1 * var(--equation-anchor-offset));
+  top: 50%;
+  transform: translateY(-50%);
+  text-decoration: none;
+  opacity: 0.7;
+  font-size: 0.9em;
+}
+
+.equation-anchor:hover {
+  opacity: 1;
+}
+
+/* In a narrow panel column the number box beside a slider shrank to 56px,
+which cut a value like -0.05 short. Keep it wide enough to read. The floor
+takes width from the slider, so it applies only on screens wide enough to
+spare it; on a phone it would leave the slider about 20px wide. */
+@media (min-width: 768px) {
+  .widget-panel input[type="number"] {
+    min-width: 4.5em;
+  }
+}
+
+/* Interactive widgets sit on a light panel (`.widget-panel`), so their text is
+dark. The dark theme gives text boxes a dark background, which hid the numbers
+beside each slider; keep the boxes light inside a panel. The reveal.js theme
+already leaves these boxes white, so the slides need no counterpart. */
+body.quarto-dark .widget-panel input[type="number"],
+body.quarto-dark .widget-panel input[type="text"],
+body.quarto-dark .widget-panel select {
+  background-color: #fff;
+  color: #222;
+  border: 1px solid #adb5bd;
+}
+
+/* Tables inside light widget panels: Quarto's dark theme sets
+`div.observablehq table thead tr th { background-color: var(--bs-body-bg); }`
+which resolves to dark (#222), hiding the table header against the light
+panel. Pin table text and headers to dark ink with transparent backgrounds. */
+.widget-panel table {
+  color: #222;
+  --bs-table-color: #222;
+  --bs-table-bg: transparent;
+  --bs-table-border-color: #dee2e6;
+  --bs-table-striped-color: #222;
+  --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+}
+
+/* The two longer selectors out-rank Quarto's (0,1,5) rule when the panel and
+`div.observablehq` are nested in either order; the short one alone loses. */
+.widget-panel table thead tr th,
+div.observablehq .widget-panel table thead tr th,
+.widget-panel div.observablehq table thead tr th {
+  background-color: transparent;
+  color: #222;
+  border-bottom: 2px solid #adb5bd;
+}
+
+.widget-panel table th,
+.widget-panel table td {
+  color: #222;
+  border-color: #dee2e6;
+}
+
+/* Phone-width overflow (#26).
+ * A callout body is a flex item, and a flex item's default `min-width: auto`
+ * lets wide content (display math, code, a long URL) stretch the whole
+ * callout past the viewport, so the page scrolls sideways. `min-width: 0`
+ * keeps the callout at the column width; the rules below then contain what
+ * is still too wide. */
+.callout-body-container {
+  min-width: 0;
+}
+
+/* Scroll a too-wide equation inside its own box instead of widening the page.
+ * MathJax sets an inline `min-width` on a numbered equation, sized to fit the
+ * equation and its number side by side; `!important` is the only way to
+ * override an inline style from a stylesheet. */
+mjx-container[display="true"] {
+  max-width: 100%;
+  min-width: 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Let long unbroken link text (bare URLs) wrap. */
+main a {
+  overflow-wrap: break-word;
+}
+
+/* On a phone, scroll a too-wide table inside its own box. `display: block`
+ * would shrink a full-width table to its content on wider screens, so it
+ * applies only below Bootstrap's `sm` breakpoint. */
+@media (max-width: 575.98px) {
+  main table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+/* Number the lines of every code block, so a line can be named in class.
+   Quarto's own `code-line-numbers: true` would do this, but downlit cannot link
+   R functions to their documentation (`code-link`) in a numbered block, so the
+   numbers are drawn here instead, from the one <span> Quarto writes per line.
+   The ::before text is not part of the code, so copying a block leaves it out.
+   Slide decks number their lines themselves (`pre.number-lines`). */
+pre.sourceCode:not(.number-lines) > code {
+  counter-reset: code-line;
+}
+
+pre.sourceCode:not(.number-lines) > code > span {
+  counter-increment: code-line;
+}
+
+pre.sourceCode:not(.number-lines) > code > span::before {
+  content: counter(code-line);
+  /* Empty alternative text: screen readers skip the number. Browsers that
+     do not know this syntax drop the line and keep the one above. */
+  content: counter(code-line) / "";
+  display: inline-block;
+  width: 2em;
+  margin-right: 1em;
+  text-align: right;
+  text-indent: 0;
+  opacity: 0.5;
+  user-select: none;
+}
+
+/* Land a link target in the upper-middle of the view, not flush against the
+   fixed navbar, where it looks missed. scroll-margin-top applies to every
+   in-page jump and to the scrollIntoView() in anchor-landing.html. */
+:target,
+:is(h1, h2, h3, h4, h5, h6, div, section, figure, table, span)[id] {
+  scroll-margin-top: 30vh;
+}
