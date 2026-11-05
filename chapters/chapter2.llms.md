@@ -4,7 +4,7 @@ Code
 
 Published
 
-Last modified: 2026-10-29 13:30:11 (PDT)
+Last modified: 2026-11-05 09:13:27 (PST)
 
 This is the second chapter. Continue building your website with more chapters.
 
@@ -12,11 +12,12 @@ This is the second chapter. Continue building your website with more chapters.
 
 You can include mathematical equations using LaTeX syntax:
 
-Inline equation: \\E = mc^2\\
+Inline equation: $E = mc^2$
 
 Display equation:
 
-\\ \int\_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi} \tag{1}\\
+$$\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+\tag{1}$$
 
 Direct link to the equation anchor: See [Equation 1](#eq-gaussian-integral).
 
