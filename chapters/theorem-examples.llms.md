@@ -4,7 +4,7 @@ Code
 
 Published
 
-Last modified: 2026-11-09 04:51:31 (PST)
+Last modified: 2026-11-11 05:22:07 (PST)
 
 This chapter demonstrates all the theorem-like environments available through the `callouty-theorem` and `custom-callout` extensions.
 
