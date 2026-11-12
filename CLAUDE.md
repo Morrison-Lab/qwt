@@ -22,7 +22,7 @@ Authoritative style guides:
 - `latex-macros/` --- git submodule for shortcode/macro definitions (see `.gitmodules`)
 - `R/`, `man/`, `DESCRIPTION`, `NAMESPACE` --- the project is also a small R package
 - `references.bib` --- BibTeX bibliography
-- `offwhite.scss`, `theme-picker.html` --- the website's Light / Off-white / Parchment / Dark theme dropdown (`theme-picker.html` builds it, `offwhite.scss` styles the two tinted palettes); the choice is saved under `mln-theme`, shared with the slides and with the other sites on this origin
+- `offwhite.scss`, `theme-picker.html` --- the website's Light / Off-white / Parchment / Dark theme dropdown (`theme-picker.html` builds it, `offwhite.scss` styles the two tinted palettes); the choice is saved under `lds-theme` (reading the older `mln-theme` as a fallback), shared with the slides and with the other sites on this origin
 - `page-navigation.html` --- HTML include (`format.html.include-after-body`) that adds floating previous/next arrows in the page margins and fixes navbar highlighting now that Home is in the sidebar; vendored from `Morrison-Lab/lbt` (a private repo, so not linked)
 - `anchor-landing.html` --- HTML include (`format.html.include-after-body`) that keeps the reader's place while equations and images change the page height
   (the same file as in `Morrison-Lab/lds`)
