@@ -34,6 +34,12 @@
   pre, pre.sourceCode, div.sourceCode { background-color: $code; }
   code:not(pre > code) { background-color: $code; }
   .navbar, #quarto-header .navbar { background-color: $nav !important; }
+  // Quarto paints the docked sidebar, its mobile rollup and the secondary
+  // nav with $sidebar-bg, compiled from cosmo's near-white $light, so they
+  // stayed white on a tinted page.
+  nav.sidebar.sidebar-navigation:not(.rollup),
+  div.sidebar.sidebar-navigation.rollup.quarto-sidebar-toggle-contents,
+  nav.quarto-secondary-nav { background-color: $page; }
   .dropdown-menu { background-color: $code; }
   // Quarto's callout outline is a fixed #dee2e6, which vanishes on a tinted
   // page; the left accent bar keeps the callout's own colour.
