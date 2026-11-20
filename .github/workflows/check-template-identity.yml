@@ -1,0 +1,24 @@
+# "Use this template" copies this workflow into every new repository.
+# There it fails until the files it reads no longer hold this template's
+# repository URL, Pages URL, title, or placeholder author.
+# In Morrison-Lab/qwt itself it passes with a notice.
+name: Check template identity
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    permissions:
+      contents: read
+    uses: Morrison-Lab/gha/.github/workflows/check-template-identity.yml@v3
+    with:
+      template: Morrison-Lab/qwt
+      strings: |
+        Quarto Website Template
+        Your Name
+        your.email@example.com

@@ -60,10 +60,25 @@ quarto --version
 
 ### Customize your website
 
+A new repository starts with this template's name, links, and placeholder author.
+The **Check template identity** workflow fails until you replace each of these values:
+
+| Value | File | Field |
+| --- | --- | --- |
+| `Quarto Website Template` | `_quarto-website.yml` | `website: title` |
+| `Quarto Website Template` | `index.qmd` | `title`, and the opening sentence |
+| `Quarto Website Template` | `DESCRIPTION` | `Title` |
+| `https://morrison-lab.github.io/qwt/` | `_quarto-website.yml` | `website: site-url` |
+| `https://github.com/Morrison-Lab/qwt` | `_quarto-website.yml` | `website: repo-url`, and the navbar GitHub link |
+| `https://github.com/Morrison-Lab/qwt` | `DESCRIPTION` | `URL` and `BugReports` |
+| `Your Name` and `your.email@example.com` | `DESCRIPTION` | `Authors@R` |
+
+The check ignores letter case, so "Quarto website template" in the opening sentence of `index.qmd` counts too.
+
+Then make the rest your own:
+
 1. **Edit `_quarto-website.yml`** to update:
 
-   - Website title and site URL
-   - Repository URL
    - Navigation menu items
    - Theme and styling options
 
@@ -208,6 +223,13 @@ Validates that all books and articles in bibliography files meet DOI requirement
 **Triggers:** Push to main, pull requests, manual dispatch
 
 **Note:** This helps maintain high-quality bibliographic references and ensures all citations are properly traceable.
+
+### 🪪 Check Template Identity Workflow (`check-template-identity.yml`)
+
+Fails in a repository made from this template while its files still hold the values listed under [Customize your website](#customize-your-website).
+In `Morrison-Lab/qwt` itself it passes with a notice.
+
+**Triggers:** Push to main, pull requests, manual dispatch
 
 ## Project Structure
 
