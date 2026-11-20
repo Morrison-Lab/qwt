@@ -54,6 +54,7 @@ Mirrors [`.github/copilot-instructions.md`](.github/copilot-instructions.md). Ke
 - **Local preview**: `quarto preview` (live reload). Full build: `quarto render`. When verifying a single edited page, render just that page (`quarto render <file>.qmd --to html`) rather than the whole site --- the `/render` command is for the full build.
 - **Submodules**: `latex-macros/` is the only git submodule (see `.gitmodules`). Run `git submodule update --init --recursive` after cloning.
 - **Spell check**: words go in `inst/WORDLIST` (see `.github/workflows/check-spelling.yaml`). Update the wordlist instead of disabling the check.
+  `typos` does not stand in for it: before pushing a README change, run `Rscript -e 'spelling::spell_check_files(c("README.md", "README.Rmd"), ignore = readLines("inst/WORDLIST"))'` (it flagged a possessive that `typos` passed, 2026-11-20).
 - **Link check**: tuned in `lychee.toml`; prefer fixing broken links over adding exceptions.
 - **Other CI checks**: workflows also verify bibliography DOIs (`check-bibliography-dois.yml`) and flag non-standard characters (`check-non-standard-chars.yaml`). Fix the flagged source rather than relaxing the check.
 - **Dependencies**: Dependabot auto-updates the `latex-macros` submodule and GitHub Actions (see `.github/dependabot.yml`); don't bump those by hand unless a PR needs it.

@@ -70,7 +70,7 @@ you replace each of these values:
 | `Quarto Website Template`                | `index.qmd`           | `title`, and the opening sentence                 |
 | `Quarto Website Template`                | `DESCRIPTION`         | `Title`                                           |
 | `https://morrison-lab.github.io/qwt/`    | `_quarto-website.yml` | `website: site-url`                               |
-| `https://github.com/Morrison-Lab/qwt`    | `_quarto-website.yml` | `website: repo-url`, and the navbar's GitHub link |
+| `https://github.com/Morrison-Lab/qwt`    | `_quarto-website.yml` | `website: repo-url`, and the navbar GitHub link   |
 | `https://github.com/Morrison-Lab/qwt`    | `DESCRIPTION`         | `URL` and `BugReports`                            |
 | `Your Name` and `your.email@example.com` | `DESCRIPTION`         | `Authors@R`                                       |
 
