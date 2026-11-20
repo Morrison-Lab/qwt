@@ -77,8 +77,6 @@ Then make the rest your own:
 
 1.  **Edit `_quarto-website.yml`** to update:
 
-    - Website title and site URL
-    - Repository URL
     - Navigation menu items
     - Theme and styling options
 
@@ -247,6 +245,15 @@ requirements:
 
 **Note:** This helps maintain high-quality bibliographic references and
 ensures all citations are properly traceable.
+
+### 🪪 Check Template Identity Workflow (`check-template-identity.yml`)
+
+Fails in a repository made from this template while its files still hold
+the values listed under [Customize your
+website](#customize-your-website). In `Morrison-Lab/qwt` itself it
+passes with a notice.
+
+**Triggers:** Push to main, pull requests, manual dispatch
 
 ## Project Structure
 
