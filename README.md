@@ -74,6 +74,9 @@ you replace each of these values:
 | `https://github.com/Morrison-Lab/qwt`    | `DESCRIPTION`         | `URL` and `BugReports`                            |
 | `Your Name` and `your.email@example.com` | `DESCRIPTION`         | `Authors@R`                                       |
 
+The check ignores letter case, so "Quarto website template" in the
+opening sentence of `index.qmd` counts too.
+
 Then make the rest your own:
 
 1.  **Edit `_quarto-website.yml`** to update:
