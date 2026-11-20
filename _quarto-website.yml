@@ -15,7 +15,7 @@ project:
 
 website:
   title: "Quarto Website Template"
-  site-url: https://ucd-serg.github.io/qwt/
+  site-url: https://morrison-lab.github.io/qwt/
   description: "A template for creating websites with Quarto"
   # https://quarto.org/docs/websites/website-llms.html --- use `llms-txt:`, not `llms:` (schema error)
   llms-txt: true
@@ -31,7 +31,7 @@ website:
   # Ctrl/Cmd-F (find in page) and Ctrl/Cmd-S (save). Keep only "/".
   search:
     keyboard-shortcut: ["/"]
-  repo-url: https://github.com/UCD-SERG/qwt
+  repo-url: https://github.com/Morrison-Lab/qwt
   repo-actions: [edit, issue, source]
   navbar:
     left:
@@ -47,7 +47,7 @@ website:
             href: chapters/theorem-examples.qmd
     right:
       - icon: github
-        href: https://github.com/UCD-SERG/qwt
+        href: https://github.com/Morrison-Lab/qwt
         aria-label: GitHub
 
   # The sidebar sets the previous/next page links, so keep it in the same
