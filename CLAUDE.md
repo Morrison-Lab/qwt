@@ -4,7 +4,8 @@ Project guidance for Claude Code (CLI, IDE, and the GitHub Action). The same con
 
 ## Project context
 
-`qwt` (Quarto Website Template) is a template repository for [Quarto](https://quarto.org/) websites maintained by the UCD-SERG lab. Downstream repos are created from this template via the GitHub "Use this template" button, so changes here propagate to new books.
+`qwt` (Quarto Website Template) is a template repository for [Quarto](https://quarto.org/) websites maintained by the Morrison Lab.
+Downstream repos are created from this template via the GitHub "Use this template" button, so changes here propagate to new books.
 
 Authoritative style guides:
 

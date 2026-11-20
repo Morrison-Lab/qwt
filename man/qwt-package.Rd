@@ -11,8 +11,8 @@ A template for creating websites with Quarto. Includes support for multiple outp
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/UCD-SERG/qwt}
-  \item Report bugs at \url{https://github.com/UCD-SERG/qwt/issues}
+  \item \url{https://github.com/Morrison-Lab/qwt}
+  \item Report bugs at \url{https://github.com/Morrison-Lab/qwt/issues}
 }
 
 }
