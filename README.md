@@ -60,7 +60,8 @@ error when rendering.
 ### Customize your website
 
 A new repository starts with this template's name, links, and
-placeholder author. The **Check template identity** workflow fails until
+placeholder author.
+The **Check template identity** workflow fails until
 you replace each of these values:
 
 | Value                                    | File                  | Field                                             |
@@ -249,9 +250,8 @@ ensures all citations are properly traceable.
 ### 🪪 Check Template Identity Workflow (`check-template-identity.yml`)
 
 Fails in a repository made from this template while its files still hold
-the values listed under [Customize your
-website](#customize-your-website). In `Morrison-Lab/qwt` itself it
-passes with a notice.
+the values listed under [Customize your website](#customize-your-website).
+In `Morrison-Lab/qwt` itself it passes with a notice.
 
 **Triggers:** Push to main, pull requests, manual dispatch
 
