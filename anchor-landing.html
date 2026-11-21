@@ -1,4 +1,37 @@
 <script>
+// A link to an id that has moved to another page of this site: when the page
+// holds no element with the link's #id, look the id up in anchor-index.json,
+// which the site's anchor-index.py post-render step writes at the site root,
+// and go to the page that holds it now, keeping the rest of the hash (a text
+// fragment). A site without the index, an id it does not list, or an id that
+// maps back to this page leaves the reader where they are. It runs on load
+// and again when an in-page link changes the hash.
+(function () {
+  if (!window.fetch) return;
+  var meta = document.querySelector('meta[name="quarto:offset"]');
+  var root = new URL(meta ? meta.getAttribute("content") : "./", location.href);
+  var index = null;
+  function follow() {
+    var id = "";
+    try { id = decodeURIComponent(location.hash.slice(1).replace(/:~:.*$/, "")); } catch (e) { return; }
+    if (!id || document.getElementById(id)) return;
+    index = index || fetch(new URL("anchor-index.json", root)).then(function (r) {
+      return r.ok ? r.json() : null;
+    }).catch(function () { return null; });
+    index.then(function (data) {
+      var page = data && data.ids && data.ids[id];
+      if (!page || document.getElementById(id)) return;
+      var dest = new URL(page, root);
+      var here = location.pathname.replace(/\/$/, "/index.html");
+      if (dest.pathname === here) return;
+      dest.hash = location.hash;
+      location.replace(dest.href);
+    });
+  }
+  follow();
+  window.addEventListener("hashchange", follow);
+})();
+
 // Typesetting equations and loading images change the height of everything
 // above the reader and push the text they were reading out of view. Keep the
 // reader's place: until they scroll, that is the link target (#id or a text

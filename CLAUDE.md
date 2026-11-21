@@ -27,7 +27,10 @@ Authoritative style guides:
   the choice is saved under `lds-theme` (reading the older `mln-theme` as a fallback), shared with the slides and with the other sites on this origin
 - `page-navigation.html` --- HTML include (`format.html.include-after-body`) that adds floating previous/next arrows in the page margins and fixes navbar highlighting now that Home is in the sidebar; vendored from `Morrison-Lab/lbt` (a private repo, so not linked)
 - `anchor-landing.html` --- HTML include (`format.html.include-after-body`) that keeps the reader's place while equations and images change the page height
-  (the same file as in `Morrison-Lab/lds`)
+  (the same file as in `Morrison-Lab/lds`).
+  It also sends a link to an id that moved to another page on to that page, by looking the id up in `anchor-index.json`
+- `anchor-index.py` --- `post-render` step that writes `_site/anchor-index.json`, which page holds each id, for `anchor-landing.html`;
+  a site that vendors `anchor-landing.html` needs this step too, or its moved ids are not followed
 - `styles.css` --- website styling; `styles-reveal.scss`, `qwt-reveal-toggle.html` (the same four-theme dropdown for slides), and the `revealjs-*.lua` filters drive the reveal.js slide output
 - `assets/`, `images/` --- static image and asset files (site pages, docs, CI/PR screenshots)
 - `.github/workflows/` --- CI workflow definitions
