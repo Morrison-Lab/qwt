@@ -15,14 +15,21 @@ with each page given relative to the site root.  It leaves out
 
 - reveal.js decks, which repeat their page's ids (the reader wants the page);
 - ids held by more than one page, such as Quarto's own page chrome,
-  since a redirect to one of them would be a guess.
+  since a redirect to one of them would be a guess;
+- ids that only number a position on the page, such as code lines (`cb3-12`),
+  footnotes (`fn2`), callouts and unnumbered sections (`callout-4`, `section-1.2`),
+  and random widget ids: the same id on another page is unrelated content;
+- ids inside HTML comments and scripts.
 
-Shared site scaffolding: the canonical copy is in Morrison-Lab/qwt, and the sites
-vendor it through their sync-site-scaffolding workflow.  Do not edit a site's copy.
+Shared site scaffolding: the canonical copy is in Morrison-Lab/qwt.  The sites
+built on it vendor it, with anchor-landing.html, through their
+.github/workflows/sync-site-scaffolding.yml (for example Morrison-Lab/mds).
+Do not edit a site's copy.
 
-    python3 anchor-index.py [--site DIR] [--out FILE]
+    anchor-index.py [--site DIR] [--out FILE]
 """
 import argparse
+import html
 import json
 import os
 import re
@@ -30,9 +37,15 @@ import sys
 from pathlib import Path
 
 # An id attribute, double- or single-quoted.  A regex is enough: Quarto writes its
-# own HTML, and a false hit (an id-like string inside a <script>) is dropped below
-# unless it is unique, where it costs one unused entry.
+# own HTML, and comments and scripts are cut out before it runs.
 ID_ATTR = re.compile(r"""\sid\s*=\s*(?:"([^"]+)"|'([^']+)')""")
+NOT_MARKUP = re.compile(r"<!--.*?-->|<script\b.*?</script\s*>", re.S | re.I)
+POSITIONAL = re.compile(
+    r"^(?:cb\d+(?:-\d+)?|fn(?:ref)?\d+(?:-\d+)?|callout-\d+|tabset-\d+(?:-\d+)*"
+    r"|(?:toc-)?section-\d+(?:[.-]\d+)*|htmlwidget-.*|ojs-.*"
+    r"|.*[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}.*)$",
+    re.I,
+)
 REVEAL = re.compile(r"""<div\s+class="reveal[\s"]""")
 OUT_NAME = "anchor-index.json"
 
@@ -41,7 +54,8 @@ def site_pages(site):
     """The website pages in `site`, as (path relative to the site root, text)."""
     for path in sorted(site.rglob("*.html")):
         rel = path.relative_to(site).as_posix()
-        if rel.startswith("site_libs/") or "/site_libs/" in rel:
+        # site_libs holds Quarto's assets; a notebook preview repeats its page's ids.
+        if rel.startswith("site_libs/") or "/site_libs/" in rel or rel.endswith(".ipynb.html"):
             continue
         text = path.read_text(encoding="utf-8", errors="replace")
         if REVEAL.search(text):
@@ -52,8 +66,10 @@ def site_pages(site):
 def build(site):
     holders = {}
     for rel, text in site_pages(site):
-        for m in ID_ATTR.finditer(text):
-            holders.setdefault(m.group(1) or m.group(2), set()).add(rel)
+        for m in ID_ATTR.finditer(NOT_MARKUP.sub("", text)):
+            name = html.unescape(m.group(1) or m.group(2))
+            if not POSITIONAL.match(name):
+                holders.setdefault(name, set()).add(rel)
     ids = {i: next(iter(p)) for i, p in sorted(holders.items()) if len(p) == 1}
     return {"version": 1, "ids": ids}
 
