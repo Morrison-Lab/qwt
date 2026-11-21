@@ -1,6 +1,11 @@
 project:
   type: website
   output-dir: _site
+  # Writes _site/anchor-index.json, which page holds each id, so that
+  # anchor-landing.html can send a link to an id that moved to another page
+  # on to the page that holds it now.
+  post-render:
+    - anchor-index.py
   render:
     - "*.qmd"
     - "chapters/*.qmd"
